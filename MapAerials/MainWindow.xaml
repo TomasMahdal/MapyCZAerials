@@ -35,7 +35,7 @@
             <StackPanel>
                 <StackPanel>
                     <Label>Typ podkladů:</Label>
-                    <ComboBox/>
+                    <ComboBox ItemsSource="{Binding SupportedMapTypes}" SelectedIndex="0"/>
                 </StackPanel>
             </StackPanel>
         </GroupBox>
