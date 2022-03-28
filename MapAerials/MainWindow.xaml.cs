@@ -39,5 +39,19 @@ namespace MapAerials
             e.Handled = true;
         }
 
+        private void btnStart_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.StartServer();
+        }
+
+        private void btnStop_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.StopServer();
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }
