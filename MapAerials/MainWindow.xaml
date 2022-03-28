@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MapAerials"
         mc:Ignorable="d"
-        Title="Mapové podklady Mapy.cz pro simulátory OMSI a LOTUS" Height="400" Width="500" Background="#F0F0F0" ResizeMode="NoResize" Icon="Graphics/favicon.ico">
+        Title="Mapové podklady Mapy.cz pro simulátory OMSI a LOTUS" Height="450" Width="500" Background="#F0F0F0" ResizeMode="NoResize" Icon="Graphics/favicon.ico">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal">
@@ -45,7 +45,9 @@
                 Stav serveru
             </GroupBox.Header>
             <StackPanel>
-                <Label HorizontalAlignment="Center">stav</Label>
+                <Label Content="{Binding ServerStatus}" Foreground="{Binding ServerStatusColor}" HorizontalAlignment="Center">
+                </Label>
+                
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button Width="100" Margin="5" Name="btnStart" Click="btnStart_Click">start</Button>
                     <Button Width="100" Margin="5" Name="btnStop" Click="btnStop_Click">stop</Button>
@@ -53,7 +55,7 @@
                 </StackPanel>
                 <DockPanel>
                     <Label>URL pro simulátor:</Label>
-                    <TextBox IsReadOnly="True" DockPanel.Dock="Right"/>
+                    <TextBox Text="{Binding  WServer.URL, Mode=OneWay}" IsReadOnly="True" DockPanel.Dock="Right"/>
                 </DockPanel>
             </StackPanel>
         </GroupBox>

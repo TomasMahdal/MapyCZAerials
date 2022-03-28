@@ -7,7 +7,6 @@ using System.Net.Sockets;
 using System.Reflection;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace MapAerials.API
 {
@@ -16,7 +15,7 @@ namespace MapAerials.API
     /// </summary>
     class WebServer
     {
-        public string Url { get; private set; }
+        public string URL { get; private set; }
         public bool ServerIsRunning { get; private set; }
 
         private TcpListener webListener;
@@ -24,6 +23,12 @@ namespace MapAerials.API
         private int port = 5050;
         private IPAddress currentIP;
         private string urlStructure = "http://{0}:{1}/";
+        private MainViewModel viewModel;
+
+        public WebServer(MainViewModel _viewModel)
+        {
+            viewModel = _viewModel;
+        }
 
         /// <summary>
         /// init and start WebServer
@@ -34,13 +39,16 @@ namespace MapAerials.API
             currentIP = GetLocalIP();
 
             // create URL
-            Url = string.Format(urlStructure, currentIP, port);
-            Console.WriteLine(Url);
+            URL = string.Format(urlStructure, currentIP, port);
 
             // start listening
             webListener = new TcpListener(currentIP, port);
             webListener.Start();
             ServerIsRunning = true;
+
+            // force update of status
+            viewModel.UpdateProperty("ServerStatus");
+            viewModel.UpdateProperty("ServerStatusColor");
 
             // run server core thread
             webserverCore = new Thread(new ThreadStart(WebServerCore));
@@ -52,7 +60,11 @@ namespace MapAerials.API
         /// </summary>
         public void Stop()
         {
-           
+            ServerIsRunning = false;
+
+            // force update of status
+            viewModel.UpdateProperty("ServerStatus");
+            viewModel.UpdateProperty("ServerStatusColor");
         }
 
         public void WebServerCore()
@@ -72,7 +84,6 @@ namespace MapAerials.API
                     string sBuffer = Encoding.UTF8.GetString(bReceive);
 
                     // request must contains HTTP
-                    Console.WriteLine(sBuffer);
                     if (sBuffer.Contains("HTTP"))
                     {
                         // get requestedURL
@@ -86,6 +97,8 @@ namespace MapAerials.API
                     }
                 }
             }
+
+            webListener.Stop();
         }
 
         /// <summary>
