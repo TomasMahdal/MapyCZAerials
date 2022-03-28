@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Threading;
 
@@ -67,7 +68,7 @@ namespace MapAerials
         }
 
         /// <summary>
-        /// create and start new WebServer
+        /// Create and start new WebServer
         /// </summary>
         public void StartServer()
         {
@@ -81,7 +82,7 @@ namespace MapAerials
         }
 
         /// <summary>
-        /// stop currently running WebServer
+        /// Stop currently running WebServer
         /// </summary>
         public void StopServer()
         {
@@ -95,6 +96,14 @@ namespace MapAerials
         public void UpdateProperty(string s)
         {
             PropertyChanged(this, new PropertyChangedEventArgs(s));
+        }
+
+        /// <summary>
+        /// Copy URL to clipboard
+        /// </summary>
+        public void CopyURL()
+        {
+            Clipboard.SetText(WServer.URL);
         }
     }
 }

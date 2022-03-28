@@ -54,8 +54,9 @@
                     <Button Width="100" Margin="5" Name="btnExit" Click="btnExit_Click">ukončit</Button>
                 </StackPanel>
                 <DockPanel>
-                    <Label>URL pro simulátor:</Label>
-                    <TextBox Text="{Binding  WServer.URL, Mode=OneWay}" IsReadOnly="True" DockPanel.Dock="Right"/>
+                    <Label DockPanel.Dock="Left">URL pro simulátor:</Label>
+                    <TextBox Text="{Binding  WServer.URL, Mode=OneWay}" IsReadOnly="True" Width="250" VerticalContentAlignment="Center"/>
+                    <Button DockPanel.Dock="Right" Name="btnCopy" Click="btnCopy_Click">zkopírovat</Button>
                 </DockPanel>
             </StackPanel>
         </GroupBox>

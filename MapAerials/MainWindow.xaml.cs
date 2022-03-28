@@ -53,5 +53,10 @@ namespace MapAerials
         {
             Environment.Exit(0);
         }
+
+        private void btnCopy_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.CopyURL();
+        }
     }
 }
