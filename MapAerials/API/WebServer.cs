@@ -61,6 +61,7 @@ namespace MapAerials.API
         public void Stop()
         {
             ServerIsRunning = false;
+            webListener.Stop();
 
             // force update of status
             viewModel.UpdateProperty("ServerStatus");
@@ -71,6 +72,12 @@ namespace MapAerials.API
         {
             while (ServerIsRunning)
             {
+                if (!webListener.Pending())
+                {
+                    Thread.Sleep(500);
+                    continue;
+                }
+
                 // accept connection
                 Socket socket = webListener.AcceptSocket();
 
@@ -91,14 +98,15 @@ namespace MapAerials.API
                         requestedUrl = requestedUrl.Substring(3).Replace(" ", "");
 
                         SendHTMLFromResources("MapAerials.API.htdocs.index.html", socket);
-                    } else
+                    }
+                    else
                     {
                         SendHTMLFromResources("MapAerials.API.htdocs.error404.html", socket);
                     }
+
+                    socket.Close();
                 }
             }
-
-            webListener.Stop();
         }
 
         /// <summary>
