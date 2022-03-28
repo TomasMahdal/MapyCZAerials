@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -64,13 +66,24 @@ namespace MapAerials.API
                 {
                     // get data from client
                     Byte[] bReceive = new Byte[1024];
+                    int i = socket.Receive(bReceive, bReceive.Length, 0);
 
                     // convert data from client to string
                     string sBuffer = Encoding.UTF8.GetString(bReceive);
 
+                    // request must contains HTTP
                     Console.WriteLine(sBuffer);
+                    if (sBuffer.Contains("HTTP"))
+                    {
+                        // get requestedURL
+                        string requestedUrl = sBuffer.Substring(0, sBuffer.IndexOf("HTTP", 1));
+                        requestedUrl = requestedUrl.Substring(3).Replace(" ", "");
 
-                    SendToBrowser("test", socket);
+                        SendHTMLFromResources("MapAerials.API.htdocs.index.html", socket);
+                    } else
+                    {
+                        SendHTMLFromResources("MapAerials.API.htdocs.error404.html", socket);
+                    }
                 }
             }
         }
@@ -80,7 +93,7 @@ namespace MapAerials.API
         /// </summary>
         /// <param name="returnData">HTML string</param>
         /// <param name="socketObj">socket object</param>
-        public void SendToBrowser(string returnData, Socket socketObj)
+        private void SendToBrowser(string returnData, Socket socketObj)
         {
             Byte[] dataForSend = Encoding.UTF8.GetBytes(returnData);
             SendHeader(dataForSend.Length, "200", socketObj);
@@ -107,6 +120,20 @@ namespace MapAerials.API
             if (socketObj.Connected)
             {
                 socketObj.Send(Encoding.ASCII.GetBytes(sBuffer));
+            }
+        }
+
+        /// <summary>
+        /// Read HTML page from resources and send it to browser
+        /// </summary>
+        /// <param name="path">path to page</param>
+        /// <param name="objSocket">currently used socket</param>
+        private void SendHTMLFromResources(string path, Socket objSocket)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            using (StreamReader reader = new StreamReader(assembly.GetManifestResourceStream(path)))
+            {
+                SendToBrowser(reader.ReadToEnd(), objSocket);
             }
         }
 

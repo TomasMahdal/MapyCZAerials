@@ -108,5 +108,9 @@
     <Resource Include="Graphics\favicon.ico" />
     <Resource Include="Graphics\icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="API\htdocs\error404.html" />
+    <EmbeddedResource Include="API\htdocs\index.html" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
