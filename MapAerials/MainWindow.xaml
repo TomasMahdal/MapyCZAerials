@@ -49,8 +49,8 @@
                 </Label>
                 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Width="100" Margin="5" Name="btnStart" Click="btnStart_Click">start</Button>
-                    <Button Width="100" Margin="5" Name="btnStop" Click="btnStop_Click">stop</Button>
+                    <Button Width="100" Margin="5" Name="btnStart" IsEnabled="{Binding StartButtonEnabled}" Click="btnStart_Click">start</Button>
+                    <Button Width="100" Margin="5" Name="btnStop" IsEnabled="{Binding StopButtonEnabled}" Click="btnStop_Click">stop</Button>
                     <Button Width="100" Margin="5" Name="btnExit" Click="btnExit_Click">ukončit</Button>
                 </StackPanel>
                 <DockPanel>

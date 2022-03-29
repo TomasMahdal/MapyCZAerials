@@ -17,14 +17,20 @@ namespace MapAerials.API
     class WebServer
     {
         public string URL { get; private set; }
-        public bool ServerIsRunning { get; private set; }
 
-        private TcpListener webListener;
+        public bool ServerIsRunning {
+            get {
+                return serverThreadActive && webListener.IsListening;
+            }
+        }
+
+        private WebListener webListener;
         private Thread webserverCore;
         private int port = 5050;
         private IPAddress currentIP;
         private string urlStructure = "http://{0}:{1}/getAerials/~z/~x/~y/";
         private MainViewModel viewModel;
+        private bool serverThreadActive = false;
 
         public WebServer(MainViewModel _viewModel)
         {
@@ -43,9 +49,9 @@ namespace MapAerials.API
             URL = string.Format(urlStructure, currentIP, port);
 
             // start listening
-            webListener = new TcpListener(currentIP, port);
+            webListener = new WebListener(currentIP, port);
             webListener.Start();
-            ServerIsRunning = true;
+            serverThreadActive = true;
 
             // force update of status
             viewModel.UpdateProperty("ServerStatus");
@@ -61,7 +67,7 @@ namespace MapAerials.API
         /// </summary>
         public void Stop()
         {
-            ServerIsRunning = false;
+            serverThreadActive = false;
             webListener.Stop();
 
             // force update of status
@@ -71,7 +77,7 @@ namespace MapAerials.API
 
         public void WebServerCore()
         {
-            while (ServerIsRunning)
+            while (serverThreadActive)
             {
                 if (!webListener.Pending())
                 {

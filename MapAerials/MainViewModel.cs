@@ -23,6 +23,28 @@ namespace MapAerials
             }
         }
 
+        /// <summary>
+        /// Can start button be used?
+        /// </summary>
+        public bool StartButtonEnabled
+        {
+            get
+            {
+                return (WServer == null);
+            }
+        }
+
+        /// <summary>
+        /// Can stop button be used?
+        /// </summary>
+        public bool StopButtonEnabled
+        {
+            get
+            {
+                return !(WServer == null);
+            }
+        }
+
         public API.WebServer WServer { get; private set; }
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -79,6 +101,8 @@ namespace MapAerials
             }
 
             UpdateProperty("WServer");
+            UpdateProperty("StartButtonEnabled");
+            UpdateProperty("StopButtonEnabled");
         }
 
         /// <summary>
@@ -91,6 +115,10 @@ namespace MapAerials
                 WServer.Stop();
                 WServer = null;
             }
+
+            UpdateProperty("WServer");
+            UpdateProperty("StartButtonEnabled");
+            UpdateProperty("StopButtonEnabled");
         }
 
         public void UpdateProperty(string s)
