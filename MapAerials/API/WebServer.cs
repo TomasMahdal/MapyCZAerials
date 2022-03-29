@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -22,7 +23,7 @@ namespace MapAerials.API
         private Thread webserverCore;
         private int port = 5050;
         private IPAddress currentIP;
-        private string urlStructure = "http://{0}:{1}/";
+        private string urlStructure = "http://{0}:{1}/getAerials/~z/~x/~y/";
         private MainViewModel viewModel;
 
         public WebServer(MainViewModel _viewModel)
@@ -74,7 +75,7 @@ namespace MapAerials.API
             {
                 if (!webListener.Pending())
                 {
-                    Thread.Sleep(500);
+                    Thread.Sleep(10);
                     continue;
                 }
 
@@ -95,9 +96,31 @@ namespace MapAerials.API
                     {
                         // get requestedURL
                         string requestedUrl = sBuffer.Substring(0, sBuffer.IndexOf("HTTP", 1));
-                        requestedUrl = requestedUrl.Substring(3).Replace(" ", "");
+                        requestedUrl = requestedUrl.Substring(3).Replace(" ", "") + "/";
 
-                        SendHTMLFromResources("MapAerials.API.htdocs.index.html", socket);
+                        // split by /
+                        var splittedUrl = requestedUrl.Split('/');
+
+                        switch (splittedUrl[1])
+                        {
+                            // homepage
+                            case "":
+                                SendHTMLFromResources("MapAerials.API.htdocs.index.html", socket);
+                                break;
+
+                            // aerial page
+                            case "getAerials":
+                                // get image from MapyCZ
+                                Bitmap aerials = MapyCZ.getAerials(splittedUrl[3], splittedUrl[4], splittedUrl[2], MapyCZ.SupportedMapTypes[0]);
+                                
+                                // send it to browser
+                                SendImageToBrowser(socket, aerials);
+                                break;
+                            // unknown page
+                            default:
+                                SendHTMLFromResources("MapAerials.API.htdocs.error404.html", socket);
+                                break;
+                        }
                     }
                     else
                     {
@@ -158,6 +181,27 @@ namespace MapAerials.API
             }
         }
 
+        /// <summary>
+        /// Send PNG image to browser
+        /// </summary>
+        /// <param name="objSocket">currently used socket</param>
+        /// <param name="img">image to send</param>
+        public void SendImageToBrowser(Socket objSocket, Image img)
+        {
+            byte[] imgBytes = (byte[])(new ImageConverter()).ConvertTo(img, typeof(byte[]));
+
+            SendHeader(imgBytes.Length, "200", objSocket, "image/png");
+
+            if (objSocket.Connected)
+            {
+                objSocket.Send(imgBytes);
+            }
+        }
+
+        /// <summary>
+        /// Get IPv4 address of local network interface
+        /// </summary>
+        /// <returns>IPv4 of local network interface</returns>
         private static IPAddress GetLocalIP()
         {
             foreach (IPAddress ip in Dns.GetHostEntry(Dns.GetHostName()).AddressList)
