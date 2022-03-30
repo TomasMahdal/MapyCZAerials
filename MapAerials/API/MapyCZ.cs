@@ -14,6 +14,8 @@ namespace MapAerials.API
     /// </summary>
     class MapyCZ
     {
+        private static string API_endpoint = "https://mapserver.mapy.cz/{0}/{1}-{2}-{3}";
+
         /// <summary>
         /// List of all supported map types
         /// </summary>
@@ -41,10 +43,14 @@ namespace MapAerials.API
         {
             try
             {
-                string url = String.Format("https://mapserver.mapy.cz/{0}/{1}-{2}-{3}", mapType.InternalName, z, x, y);
-                Console.WriteLine(url);
+                // generate URL
+                string url = String.Format(API_endpoint, mapType.InternalName, z, x, y);
+
+                // get response
                 WebRequest request = System.Net.WebRequest.Create(url);
                 WebResponse response = request.GetResponse();
+
+                // convert image data to bitmap
                 return new Bitmap(response.GetResponseStream());
             } catch (System.Net.WebException ex)
             {
