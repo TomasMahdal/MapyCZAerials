@@ -117,7 +117,7 @@ namespace MapAerials.API
                             // aerial page
                             case "getAerials":
                                 // get image from MapyCZ
-                                Bitmap aerials = MapyCZ.getAerials(splittedUrl[3], splittedUrl[4], splittedUrl[2], MapyCZ.SupportedMapTypes[0]);
+                                Bitmap aerials = MapyCZ.getAerials(splittedUrl[3], splittedUrl[4], splittedUrl[2], viewModel.SelectedMapType);
                                 
                                 // send it to browser
                                 SendImageToBrowser(socket, aerials);

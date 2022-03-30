@@ -39,11 +39,17 @@ namespace MapAerials.API
         /// <returns></returns>
         public static Bitmap getAerials(string x, string y, string z, Structures.MapType mapType)
         {
-            string url = String.Format("https://mapserver.mapy.cz/{0}/{1}-{2}-{3}", mapType.InternalName, z, x, y);
-            Console.WriteLine(url);
-            WebRequest request = System.Net.WebRequest.Create(url);
-            WebResponse response = request.GetResponse();
-            return new Bitmap(response.GetResponseStream());
+            try
+            {
+                string url = String.Format("https://mapserver.mapy.cz/{0}/{1}-{2}-{3}", mapType.InternalName, z, x, y);
+                Console.WriteLine(url);
+                WebRequest request = System.Net.WebRequest.Create(url);
+                WebResponse response = request.GetResponse();
+                return new Bitmap(response.GetResponseStream());
+            } catch (System.Net.WebException ex)
+            {
+                return null;
+            }
         }
     }
 }

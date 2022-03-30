@@ -45,6 +45,11 @@ namespace MapAerials
             }
         }
 
+        /// <summary>
+        /// Map type selected by user
+        /// </summary>
+        public Structures.MapType SelectedMapType { get; set; }
+
         public API.WebServer WServer { get; private set; }
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -87,6 +92,11 @@ namespace MapAerials
                     return new SolidColorBrush(Color.FromRgb(180, 0, 0));
                 }
             }
+        }
+
+        public MainViewModel()
+        {
+            SelectedMapType = SupportedMapTypes[0];
         }
 
         /// <summary>
