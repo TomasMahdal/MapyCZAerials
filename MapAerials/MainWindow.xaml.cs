@@ -26,7 +26,7 @@ namespace MapAerials
         {
             InitializeComponent();
 
-            viewModel = new MainViewModel();
+            viewModel = new MainViewModel(this);
             DataContext = viewModel;
         }
 
@@ -57,6 +57,12 @@ namespace MapAerials
         private void btnCopy_Click(object sender, RoutedEventArgs e)
         {
             viewModel.CopyURL();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true;
         }
     }
 }

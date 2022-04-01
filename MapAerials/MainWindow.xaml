@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MapAerials"
         mc:Ignorable="d"
-        Title="Mapové podklady Mapy.cz pro simulátory OMSI a LOTUS" Height="400" Width="500" Background="#F0F0F0" ResizeMode="NoResize" Icon="Graphics/favicon.ico">
+        Title="Mapové podklady Mapy.cz pro simulátory OMSI a LOTUS" Height="400" Width="500" Background="#F0F0F0" ResizeMode="NoResize" Icon="Graphics/favicon.ico" Closing="Window_Closing">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -21,7 +21,7 @@
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/MapAerials;component/Graphics/GitHub-Mark-32px.png" Height="20"/>
                     <Label>
-                        <Hyperlink NavigateUri="https://github.com/TomasMahdal" RequestNavigate="Hyperlink_RequestNavigate">/TomasMahdal/abc</Hyperlink>
+                        <Hyperlink NavigateUri="https://github.com/TomasMahdal" RequestNavigate="Hyperlink_RequestNavigate">https://github.com/TomasMahdal/abc</Hyperlink>
                     </Label>
                 </StackPanel>
             </StackPanel>
@@ -35,7 +35,7 @@
             <StackPanel>
                 <StackPanel>
                     <Label>Typ podkladů:</Label>
-                    <ComboBox ItemsSource="{Binding SupportedMapTypes}" SelectedIndex="0"/>
+                    <ComboBox ItemsSource="{Binding SupportedMapTypes}" SelectedItem="{Binding SelectedMapType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
             </StackPanel>
         </GroupBox>
@@ -49,8 +49,8 @@
                 </Label>
                 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Width="100" Margin="5" Name="btnStart" Click="btnStart_Click">start</Button>
-                    <Button Width="100" Margin="5" Name="btnStop" Click="btnStop_Click">stop</Button>
+                    <Button Width="100" Margin="5" Name="btnStart" IsEnabled="{Binding StartButtonEnabled}" Click="btnStart_Click">start</Button>
+                    <Button Width="100" Margin="5" Name="btnStop" IsEnabled="{Binding StopButtonEnabled}" Click="btnStop_Click">stop</Button>
                     <Button Width="100" Margin="5" Name="btnExit" Click="btnExit_Click">ukončit</Button>
                 </StackPanel>
                 <DockPanel>

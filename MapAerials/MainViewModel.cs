@@ -12,6 +12,8 @@ namespace MapAerials
 {
     class MainViewModel : INotifyPropertyChanged
     {
+        private MainWindow parent;
+
         /// <summary>
         /// Supported map types by Mapy.cz API
         /// </summary>
@@ -22,6 +24,33 @@ namespace MapAerials
                 return API.MapyCZ.SupportedMapTypes;
             }
         }
+
+        /// <summary>
+        /// Can start button be used?
+        /// </summary>
+        public bool StartButtonEnabled
+        {
+            get
+            {
+                return (WServer == null);
+            }
+        }
+
+        /// <summary>
+        /// Can stop button be used?
+        /// </summary>
+        public bool StopButtonEnabled
+        {
+            get
+            {
+                return !(WServer == null);
+            }
+        }
+
+        /// <summary>
+        /// Map type selected by user
+        /// </summary>
+        public Structures.MapType SelectedMapType { get; set; }
 
         public API.WebServer WServer { get; private set; }
         public event PropertyChangedEventHandler PropertyChanged;
@@ -67,10 +96,20 @@ namespace MapAerials
             }
         }
 
+        private NotificationIcon notificationIncon;
+
+        public MainViewModel(MainWindow mainWindow)
+        {
+            parent = mainWindow;
+
+            SelectedMapType = SupportedMapTypes[0];
+            notificationIncon = new NotificationIcon(this);
+        }
+
         /// <summary>
         /// Create and start new WebServer
         /// </summary>
-        public void StartServer()
+        public void StartServer(object sender = null, EventArgs e = null)
         {
             if (WServer == null)
             {
@@ -79,18 +118,24 @@ namespace MapAerials
             }
 
             UpdateProperty("WServer");
+            UpdateProperty("StartButtonEnabled");
+            UpdateProperty("StopButtonEnabled");
         }
 
         /// <summary>
         /// Stop currently running WebServer
         /// </summary>
-        public void StopServer()
+        public void StopServer(object sender = null, EventArgs e = null)
         {
             if (WServer != null)
             {
                 WServer.Stop();
                 WServer = null;
             }
+
+            UpdateProperty("WServer");
+            UpdateProperty("StartButtonEnabled");
+            UpdateProperty("StopButtonEnabled");
         }
 
         public void UpdateProperty(string s)
@@ -104,6 +149,22 @@ namespace MapAerials
         public void CopyURL()
         {
             Clipboard.SetText(WServer.URL);
+        }
+
+        /// <summary>
+        /// Make MainForm visible again
+        /// </summary>
+        public void ShowMainForm(object sender, EventArgs e)
+        {
+            parent.Show();
+        }
+
+        /// <summary>
+        /// Force all threads to stop and exit app
+        /// </summary>
+        public void ExitApp(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }
