@@ -158,9 +158,13 @@ namespace MapAerials.API
             }
         }
 
+        /// <summary>
+        /// Return IPv4 of local network interfrace
+        /// </summary>
+        /// <returns>IPv4 of local network interfrace</returns>
         private static IPAddress GetLocalIP()
         {
-            foreach (IPAddress ip in Dns.GetHostEntry(Dns.GetHostName()).AddressList)
+            foreach (IPAddress ip in Dns.GetHostByName(Dns.GetHostName()).AddressList)
             {
                 if (ip.AddressFamily == AddressFamily.InterNetwork)
                 {
