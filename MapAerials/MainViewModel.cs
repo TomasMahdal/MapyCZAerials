@@ -12,6 +12,8 @@ namespace MapAerials
 {
     class MainViewModel : INotifyPropertyChanged
     {
+        private MainWindow parent;
+
         /// <summary>
         /// Supported map types by Mapy.cz API
         /// </summary>
@@ -96,10 +98,12 @@ namespace MapAerials
 
         private NotificationIcon notificationIncon;
 
-        public MainViewModel()
+        public MainViewModel(MainWindow mainWindow)
         {
+            parent = mainWindow;
+
             SelectedMapType = SupportedMapTypes[0];
-            notificationIncon = new NotificationIcon();
+            notificationIncon = new NotificationIcon(this);
         }
 
         /// <summary>
@@ -145,6 +149,14 @@ namespace MapAerials
         public void CopyURL()
         {
             Clipboard.SetText(WServer.URL);
+        }
+
+        /// <summary>
+        /// Make MainForm visible again
+        /// </summary>
+        public void ShowMainForm(object sender, EventArgs e)
+        {
+            parent.Show();
         }
     }
 }

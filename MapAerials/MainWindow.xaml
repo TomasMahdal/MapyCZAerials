@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MapAerials"
         mc:Ignorable="d"
-        Title="Mapové podklady Mapy.cz pro simulátory OMSI a LOTUS" Height="450" Width="500" Background="#F0F0F0" ResizeMode="NoResize" Icon="Graphics/favicon.ico">
+        Title="Mapové podklady Mapy.cz pro simulátory OMSI a LOTUS" Height="450" Width="500" Background="#F0F0F0" ResizeMode="NoResize" Icon="Graphics/favicon.ico" Closing="Window_Closing">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

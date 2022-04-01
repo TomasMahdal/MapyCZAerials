@@ -12,14 +12,28 @@ namespace MapAerials
     class NotificationIcon
     {
         private NotifyIcon notifyIcon;
+        private MainViewModel parent;
 
-        public NotificationIcon()
+        public NotificationIcon(MainViewModel mainViewModel)
         {
+            parent = mainViewModel;
+
             notifyIcon = new NotifyIcon();
 
+            // main properties of notifyIcon
             notifyIcon.Text = "MapAerials";
             notifyIcon.Icon = Properties.Resources.notifyIcon;
             notifyIcon.Visible = true;
+
+            // click on icon
+            notifyIcon.Click += parent.ShowMainForm;
+
+            CreateContextMenu();
+        }
+
+        public void CreateContextMenu()
+        {
+
         }
     }
 }
