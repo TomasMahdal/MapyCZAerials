@@ -187,7 +187,6 @@ namespace MapAerials.API
             }
         }
 
-        /// <summary>
         /// Send PNG image to browser
         /// </summary>
         /// <param name="objSocket">currently used socket</param>
@@ -210,7 +209,7 @@ namespace MapAerials.API
         /// <returns>IPv4 of local network interface</returns>
         private static IPAddress GetLocalIP()
         {
-            foreach (IPAddress ip in Dns.GetHostEntry(Dns.GetHostName()).AddressList)
+            foreach (IPAddress ip in Dns.GetHostByName(Dns.GetHostName()).AddressList)
             {
                 if (ip.AddressFamily == AddressFamily.InterNetwork)
                 {

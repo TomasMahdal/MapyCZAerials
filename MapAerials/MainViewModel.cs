@@ -91,7 +91,7 @@ namespace MapAerials
                 }
                 else
                 {
-                    return new SolidColorBrush(Color.FromRgb(180, 0, 0));
+                    return new SolidColorBrush(Color.FromRgb(180, 20, 20));
                 }
             }
         }
