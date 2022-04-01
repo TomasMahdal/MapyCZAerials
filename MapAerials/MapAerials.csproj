@@ -41,6 +41,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -62,6 +63,7 @@
     <Compile Include="API\MapyCZ.cs" />
     <Compile Include="API\WebListener.cs" />
     <Compile Include="API\WebServer.cs" />
+    <Compile Include="NotificationIcon.cs" />
     <Compile Include="Structures\MapType.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

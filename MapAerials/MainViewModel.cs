@@ -94,9 +94,12 @@ namespace MapAerials
             }
         }
 
+        private NotificationIcon notificationIncon;
+
         public MainViewModel()
         {
             SelectedMapType = SupportedMapTypes[0];
+            notificationIncon = new NotificationIcon();
         }
 
         /// <summary>
