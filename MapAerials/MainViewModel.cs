@@ -109,7 +109,7 @@ namespace MapAerials
         /// <summary>
         /// Create and start new WebServer
         /// </summary>
-        public void StartServer()
+        public void StartServer(object sender = null, EventArgs e = null)
         {
             if (WServer == null)
             {
@@ -125,7 +125,7 @@ namespace MapAerials
         /// <summary>
         /// Stop currently running WebServer
         /// </summary>
-        public void StopServer()
+        public void StopServer(object sender = null, EventArgs e = null)
         {
             if (WServer != null)
             {
@@ -157,6 +157,14 @@ namespace MapAerials
         public void ShowMainForm(object sender, EventArgs e)
         {
             parent.Show();
+        }
+
+        /// <summary>
+        /// Force all threads to stop and exit app
+        /// </summary>
+        public void ExitApp(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

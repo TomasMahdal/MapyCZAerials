@@ -31,9 +31,18 @@ namespace MapAerials
             CreateContextMenu();
         }
 
+        /// <summary>
+        /// generate context menu for notifyIcon
+        /// </summary>
         public void CreateContextMenu()
         {
+            ContextMenuStrip cs = new ContextMenuStrip();
+            cs.Items.Add("ukončit", null, parent.ExitApp);
+            cs.Items.Add(new ToolStripSeparator());
+            cs.Items.Add("zapnout server", null, parent.StartServer);
+            cs.Items.Add("vypnout server", null, parent.StopServer);
 
+            notifyIcon.ContextMenuStrip = cs;
         }
     }
 }
