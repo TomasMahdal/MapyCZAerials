@@ -28,6 +28,8 @@ namespace MapAerials
 
             viewModel = new MainViewModel(this);
             DataContext = viewModel;
+
+            comboMapType.SelectedIndex = 0;
         }
 
         /// <summary>

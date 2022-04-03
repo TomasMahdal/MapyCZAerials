@@ -101,8 +101,6 @@ namespace MapAerials
         public MainViewModel(MainWindow mainWindow)
         {
             parent = mainWindow;
-
-            SelectedMapType = SupportedMapTypes[0];
             notificationIncon = new NotificationIcon(this);
         }
 

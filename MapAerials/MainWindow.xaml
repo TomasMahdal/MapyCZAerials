@@ -35,7 +35,7 @@
             <StackPanel>
                 <StackPanel>
                     <Label>Typ podkladů:</Label>
-                    <ComboBox ItemsSource="{Binding SupportedMapTypes}" SelectedItem="{Binding SelectedMapType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <ComboBox Name="comboMapType" ItemsSource="{Binding SupportedMapTypes}" SelectedItem="{Binding SelectedMapType, Mode=OneWayToSource}"/>
                 </StackPanel>
             </StackPanel>
         </GroupBox>
