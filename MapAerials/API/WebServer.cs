@@ -43,7 +43,10 @@ namespace MapAerials.API
         public void Start()
         {
             // get IP
-            currentIP = GetLocalIP();
+            //currentIP = GetLocalIP();
+
+            // use localhost address instead of IPv4 of network card
+            currentIP = IPAddress.Parse("127.0.0.1");
 
             // create URL
             URL = string.Format(urlStructure, currentIP, port);
