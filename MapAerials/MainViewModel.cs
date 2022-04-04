@@ -146,7 +146,10 @@ namespace MapAerials
         /// </summary>
         public void CopyURL()
         {
-            Clipboard.SetText(WServer.URL);
+            if (WServer != null)
+            {
+                Clipboard.SetText(WServer.URL);
+            }
         }
 
         /// <summary>
