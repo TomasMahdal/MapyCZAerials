@@ -11,13 +11,15 @@ namespace MapAerials
 {
     class Languages
     {
+        private static ResourceDictionary dictionary;
+
         /// <summary>
         /// Set language of app based on CurrentCulture settings
         /// </summary>
         public static void SetLanguageDictionary()
         {
-            ResourceDictionary dictionary = new ResourceDictionary();
-            switch (Thread.CurrentThread.CurrentCulture.ToString())
+            dictionary = new ResourceDictionary();
+            switch (GetCulture())
             {
                 case "cs-CZ":
                     dictionary.Source = new Uri("..\\Resources\\StringResources.cs-CZ.xaml", UriKind.Relative);
@@ -29,5 +31,25 @@ namespace MapAerials
 
             Application.Current.Resources.MergedDictionaries.Add(dictionary);
         }
+
+        /// <summary>
+        /// Get localized string
+        /// </summary>
+        /// <param name="s">string id</param>
+        /// <returns>localized string</returns>
+        public static string GetString(string s)
+        {
+            return dictionary[s];
+        }
+
+        /// <summary>
+        /// Get current culture string identificator
+        /// </summary>
+        /// <returns>culture string identificator</returns>
+        public static string GetCulture()
+        {
+            return Thread.CurrentThread.CurrentCulture.ToString();
+        }
     }
 }
+ 
