@@ -3,10 +3,18 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
      xmlns:system="clr-namespace:System;assembly=mscorlib">
 
+    <system:String x:Key="title">Mapové podklady Mapy.cz pro simulátory OMSI a LOTUS</system:String>
+    
     <system:String x:Key="start">start</system:String>
     <system:String x:Key="stop">stop</system:String>
     <system:String x:Key="exit">ukončit</system:String>
 
     <system:String x:Key="headings1">Mapové podklady od Mapy.cz</system:String>
     <system:String x:Key="headings2">pro simulátory OMSI a LOTUS</system:String>
+
+    <system:String x:Key="map_settings">Nastavení podkladů</system:String>
+    <system:String x:Key="map_type">Typ podkladů:</system:String>
+
+    <system:String x:Key="server_status">Status serveru</system:String>
+    <system:String x:Key="URL_for_simulator">URL pro simulátor:</system:String>
 </ResourceDictionary>
