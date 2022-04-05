@@ -9,7 +9,7 @@ Why [Mapy.cz](http://mapy.cz/)? Because they have done amazing work on mapping C
 
 ## How does it work?
 This tool creates a WWW server on your local computer.
-It generates a URL, that you copy into the simulator ([how to?](https://stackedit.io/other_file.md)).
+It generates a URL, that you copy into the simulator ([How to use it with simulators?](HOW_TO.MD)).
 Then you download the map aerials in a simulator like normal and use it for creating your map.
 
 ### Yes, you can change map type at runtime!
