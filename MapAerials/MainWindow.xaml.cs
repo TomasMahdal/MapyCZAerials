@@ -24,11 +24,17 @@ namespace MapAerials
         private MainViewModel viewModel;
         public MainWindow()
         {
+            // set language
+            Languages.SetLanguageDictionary();
+
+            // init window
             InitializeComponent();
 
+            // init viewmodel
             viewModel = new MainViewModel(this);
             DataContext = viewModel;
 
+            // select first map type (so combobox selected item won't be null)
             comboMapType.SelectedIndex = 0;
         }
 

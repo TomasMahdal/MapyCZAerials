@@ -1,0 +1,12 @@
+﻿<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+     xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="start">start</system:String>
+    <system:String x:Key="stop">stop</system:String>
+    <system:String x:Key="exit">exit</system:String>
+
+    <system:String x:Key="headings1">Map aerials from Mapy.cz</system:String>
+    <system:String x:Key="headings2">for simulators OMSI and LOTUS</system:String>
+</ResourceDictionary>

@@ -51,7 +51,7 @@
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button Width="100" Margin="5" Name="btnStart" IsEnabled="{Binding StartButtonEnabled}" Click="btnStart_Click">start</Button>
                     <Button Width="100" Margin="5" Name="btnStop" IsEnabled="{Binding StopButtonEnabled}" Click="btnStop_Click">stop</Button>
-                    <Button Width="100" Margin="5" Name="btnExit" Click="btnExit_Click">ukončit</Button>
+                    <Button Width="100" Margin="5" Name="btnExit" Click="btnExit_Click" Content="{DynamicResource exit}"/>
                 </StackPanel>
                 <DockPanel>
                     <Label DockPanel.Dock="Left">URL pro simulátor:</Label>
