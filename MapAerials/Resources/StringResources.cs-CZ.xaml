@@ -21,4 +21,8 @@
     <system:String x:Key="map_ophoto-m">letecká</system:String>
     <system:String x:Key="map_turist-m">turistická</system:String>
     <system:String x:Key="map_zemepis-m">zeměpisná</system:String>
+
+    <system:String x:Key="notifyIcon_exit">ukončit</system:String>
+    <system:String x:Key="notifyIcon_start">spustit server</system:String>
+    <system:String x:Key="notifyIcon_stop">vypnout server</system:String>
 </ResourceDictionary>

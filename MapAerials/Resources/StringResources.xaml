@@ -21,4 +21,8 @@
     <system:String x:Key="map_ophoto-m">aerial</system:String>
     <system:String x:Key="map_turist-m">turistical</system:String>
     <system:String x:Key="map_zemepis-m">geographical</system:String>
+
+    <system:String x:Key="notifyIcon_exit">exit</system:String>
+    <system:String x:Key="notifyIcon_start">start server</system:String>
+    <system:String x:Key="notifyIcon_stop">stop server</system:String>
 </ResourceDictionary>

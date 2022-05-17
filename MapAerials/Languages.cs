@@ -24,6 +24,7 @@ namespace MapAerials
                 case "cs-CZ":
                     dictionary.Source = new Uri("..\\Resources\\StringResources.cs-CZ.xaml", UriKind.Relative);
                     break;
+
                 default:
                     dictionary.Source = new Uri("..\\Resources\\StringResources.xaml", UriKind.Relative);
                     break;
