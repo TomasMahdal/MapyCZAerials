@@ -4,7 +4,7 @@
  - For usage of map aerials, you must **have a tool in "online"** mode:
   
   ![image](https://user-images.githubusercontent.com/47004276/161797426-cf3b327c-0b38-4255-abaa-0074498942a8.png)
- - You have to choose one from the list of map types:
+ - You have to choose one of the map types:
  
  ![image](https://user-images.githubusercontent.com/47004276/161797731-e8321424-b56a-45fc-bd48-a2a19ee2a570.png)
  If you want to change the map type in runtime, there is no problem. You can change it whenever you want and it immediately changes downloaded images to the corresponding type. **For the changes to take effect in the editor, you must redownload tile aerials.**
@@ -14,7 +14,7 @@ In ***options.cfg*** (located in game directory), find this parameter:
 
     [Editor_LinkAerial]
 
-Under this, **paste your URL address**, that you copied from this tool. For example:
+Paste your URL address (that you copied from this tool) under this parameter. For example:
 
     [Editor_LinkAerial]
     http://127.0.0.1:5050/getAerials/~z/~x/~y/
