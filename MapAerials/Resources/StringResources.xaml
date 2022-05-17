@@ -17,4 +17,8 @@
 
     <system:String x:Key="server_status">Server status</system:String>
     <system:String x:Key="URL_for_simulator">URL for simulator:</system:String>
+
+    <system:String x:Key="map_ophoto-m">aerial</system:String>
+    <system:String x:Key="map_turist-m">turistical</system:String>
+    <system:String x:Key="map_zemepis-m">geographical</system:String>
 </ResourceDictionary>

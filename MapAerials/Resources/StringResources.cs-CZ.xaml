@@ -17,4 +17,8 @@
 
     <system:String x:Key="server_status">Status serveru</system:String>
     <system:String x:Key="URL_for_simulator">URL pro simulátor:</system:String>
+
+    <system:String x:Key="map_ophoto-m">letecká</system:String>
+    <system:String x:Key="map_turist-m">turistická</system:String>
+    <system:String x:Key="map_zemepis-m">zeměpisná</system:String>
 </ResourceDictionary>

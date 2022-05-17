@@ -39,7 +39,7 @@ namespace MapAerials
         /// <returns>localized string</returns>
         public static string GetString(string s)
         {
-            return dictionary[s];
+            return dictionary[s].ToString();
         }
 
         /// <summary>

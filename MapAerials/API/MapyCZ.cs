@@ -23,9 +23,9 @@ namespace MapAerials.API
         {
             get {
                 List<Structures.MapType> mapList = new List<Structures.MapType>();
-                mapList.Add(new Structures.MapType(1, "ophoto-m", "letecká"));
-                mapList.Add(new Structures.MapType(2, "turist-m", "turistická"));
-                mapList.Add(new Structures.MapType(3, "zemepis-m", "zeměpisná mapa"));
+                mapList.Add(new Structures.MapType(1, "ophoto-m", Languages.GetString("map_ophoto-m")));
+                mapList.Add(new Structures.MapType(2, "turist-m", Languages.GetString("map_turist-m")));
+                mapList.Add(new Structures.MapType(3, "zemepis-m", Languages.GetString("map_zemepis-m")));
 
                 return mapList;
             }
