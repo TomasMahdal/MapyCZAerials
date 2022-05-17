@@ -186,7 +186,14 @@ namespace MapAerials.API
             var assembly = Assembly.GetExecutingAssembly();
             using (StreamReader reader = new StreamReader(assembly.GetManifestResourceStream(path)))
             {
-                SendToBrowser(reader.ReadToEnd(), objSocket);
+                // get page content from resources
+                string pageContent = reader.ReadToEnd();
+
+                // replace some of keys on page
+                pageContent = pageContent.Replace("{%link%}", URL);
+
+                // send page to browser
+                SendToBrowser(pageContent, objSocket);
             }
         }
 

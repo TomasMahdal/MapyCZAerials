@@ -15,7 +15,7 @@
 
         <StackPanel Orientation="Horizontal">
             <Image Source="/MapAerials;component/Graphics/icon.png" Height="70" VerticalAlignment="Center"/>
-            <StackPanel VerticalAlignment="Center">
+            <StackPanel VerticalAlignment="Center" Margin="15 0 0 0">
                 <Label Foreground="#7DC146" FontWeight="Bold" FontSize="18" Content="{DynamicResource headings1}"/>
                 <Label Content="{DynamicResource headings2}"/>
                 <StackPanel Orientation="Horizontal">
