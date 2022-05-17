@@ -21,7 +21,7 @@
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/MapAerials;component/Graphics/GitHub-Mark-32px.png" Height="20"/>
                     <Label>
-                        <Hyperlink NavigateUri="https://github.com/TomasMahdal/MapAerials" RequestNavigate="Hyperlink_RequestNavigate">https://github.com/TomasMahdal/MapAerials/</Hyperlink>
+                        <Hyperlink NavigateUri="https://github.com/TomasMahdal/MapyCZAerials" RequestNavigate="Hyperlink_RequestNavigate">https://github.com/TomasMahdal/MapyCZAerials/</Hyperlink>
                     </Label>
                 </StackPanel>
             </StackPanel>
