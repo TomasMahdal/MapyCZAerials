@@ -37,10 +37,10 @@ namespace MapAerials
         public void CreateContextMenu()
         {
             ContextMenuStrip cs = new ContextMenuStrip();
-            cs.Items.Add("ukončit", null, parent.ExitApp);
+            cs.Items.Add(Languages.GetString("notifyIcon_exit"), null, parent.ExitApp);
             cs.Items.Add(new ToolStripSeparator());
-            cs.Items.Add("zapnout server", null, parent.StartServer);
-            cs.Items.Add("vypnout server", null, parent.StopServer);
+            cs.Items.Add(Languages.GetString("notifyIcon_start"), null, parent.StartServer);
+            cs.Items.Add(Languages.GetString("notifyIcon_stop"), null, parent.StopServer);
 
             notifyIcon.ContextMenuStrip = cs;
         }

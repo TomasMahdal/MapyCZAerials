@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MapAerials"
         mc:Ignorable="d"
-        Title="Mapové podklady Mapy.cz pro simulátory OMSI a LOTUS" Height="400" Width="500" Background="#F0F0F0" ResizeMode="NoResize" Icon="Graphics/favicon.ico" Closing="Window_Closing">
+        Title="{DynamicResource title}" Height="400" Width="500" Background="#F0F0F0" ResizeMode="NoResize" Icon="Graphics/favicon.ico" Closing="Window_Closing">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -16,12 +16,12 @@
         <StackPanel Orientation="Horizontal">
             <Image Source="/MapAerials;component/Graphics/icon.png" Height="70" VerticalAlignment="Center"/>
             <StackPanel VerticalAlignment="Center" Margin="15 0 0 0">
-                <Label Foreground="#7DC146" FontWeight="Bold" FontSize="18">Mapové podklady Mapy.cz</Label>
-                <Label>pro simulátory OMSI a LOTUS</Label>
+                <Label Foreground="#7DC146" FontWeight="Bold" FontSize="18" Content="{DynamicResource headings1}"/>
+                <Label Content="{DynamicResource headings2}"/>
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/MapAerials;component/Graphics/GitHub-Mark-32px.png" Height="20"/>
                     <Label>
-                        <Hyperlink NavigateUri="https://github.com/TomasMahdal" RequestNavigate="Hyperlink_RequestNavigate">https://github.com/TomasMahdal/abc</Hyperlink>
+                        <Hyperlink NavigateUri="https://github.com/TomasMahdal/MapAerials" RequestNavigate="Hyperlink_RequestNavigate">https://github.com/TomasMahdal/MapAerials/</Hyperlink>
                     </Label>
                 </StackPanel>
             </StackPanel>
@@ -29,12 +29,12 @@
 
         <GroupBox Grid.Row="1" Margin="5">
             <GroupBox.Header>
-                Nastavení podkladů
+                <Label Content="{DynamicResource map_settings}"/>
             </GroupBox.Header>
 
             <StackPanel>
                 <StackPanel>
-                    <Label>Typ podkladů:</Label>
+                    <Label Content="{DynamicResource map_type}"/>
                     <ComboBox Name="comboMapType" ItemsSource="{Binding SupportedMapTypes}" SelectedItem="{Binding SelectedMapType, Mode=OneWayToSource}"/>
                 </StackPanel>
             </StackPanel>
@@ -42,19 +42,19 @@
 
         <GroupBox Grid.Row="2" Margin="5">
             <GroupBox.Header>
-                Stav serveru
+                <Label Content="{DynamicResource server_status}"/>
             </GroupBox.Header>
             <StackPanel>
                 <Label Content="{Binding ServerStatus}" Foreground="{Binding ServerStatusColor}" HorizontalAlignment="Center">
                 </Label>
                 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Width="100" Margin="5" Name="btnStart" IsEnabled="{Binding StartButtonEnabled}" Click="btnStart_Click">start</Button>
-                    <Button Width="100" Margin="5" Name="btnStop" IsEnabled="{Binding StopButtonEnabled}" Click="btnStop_Click">stop</Button>
-                    <Button Width="100" Margin="5" Name="btnExit" Click="btnExit_Click">ukončit</Button>
+                    <Button Width="100" Margin="5" Name="btnStart" IsEnabled="{Binding StartButtonEnabled}" Click="btnStart_Click" Content="{DynamicResource start}"/>
+                    <Button Width="100" Margin="5" Name="btnStop" IsEnabled="{Binding StopButtonEnabled}" Click="btnStop_Click" Content="{DynamicResource stop}"/>
+                    <Button Width="100" Margin="5" Name="btnExit" Click="btnExit_Click" Content="{DynamicResource exit}"/>
                 </StackPanel>
                 <DockPanel>
-                    <Label DockPanel.Dock="Left">URL pro simulátor:</Label>
+                    <Label DockPanel.Dock="Left" Content="{DynamicResource URL_for_simulator}"/>
                     <TextBox Text="{Binding  WServer.URL, Mode=OneWay}" IsReadOnly="True" Width="300" VerticalContentAlignment="Center"/>
                     <Button DockPanel.Dock="Right" Name="btnCopy" Click="btnCopy_Click" Width="30">&#x2398;</Button>
                 </DockPanel>
