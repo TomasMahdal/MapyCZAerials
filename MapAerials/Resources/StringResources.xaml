@@ -25,4 +25,6 @@
     <system:String x:Key="notifyIcon_exit">exit</system:String>
     <system:String x:Key="notifyIcon_start">start server</system:String>
     <system:String x:Key="notifyIcon_stop">stop server</system:String>
+
+    <system:String x:Key="dialog_anotherInstance">An instance of the application is already running.</system:String>
 </ResourceDictionary>

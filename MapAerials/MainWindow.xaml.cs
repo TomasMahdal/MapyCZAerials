@@ -27,6 +27,12 @@ namespace MapAerials
             // set language
             Languages.SetLanguageDictionary();
 
+            // verify if is not another instance running
+            if (System.Diagnostics.Process.GetProcessesByName(System.IO.Path.GetFileNameWithoutExtension(System.Reflection.Assembly.GetEntryAssembly().Location)).Count() > 1) {
+                MessageBox.Show(Languages.GetString("dialog_anotherInstance"), "MapAerials", MessageBoxButton.OK, MessageBoxImage.Warning);
+                Environment.Exit(0);
+            }
+
             // init window
             InitializeComponent();
 
