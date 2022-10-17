@@ -15,6 +15,10 @@ namespace MapAerials.Structures
         /// URL of mapType
         /// </summary>
         public string Url { get; private set; }
+
+        /// <summary>
+        /// Map type name
+        /// </summary>
         public string MapType { get; private set; }
 
         public SpecialLink(string url, string mapType)

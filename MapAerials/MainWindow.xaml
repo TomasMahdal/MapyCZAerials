@@ -58,6 +58,9 @@
                     <TextBox Text="{Binding  WServer.URL, Mode=OneWay}" IsReadOnly="True" Width="300" VerticalContentAlignment="Center"/>
                     <Button DockPanel.Dock="Right" Name="btnCopy" Click="btnCopy_Click" Width="30">&#x2398;</Button>
                 </DockPanel>
+
+
+                <Button DockPanel.Dock="Right" Name="btnSpecial" Click="btnSpecial_Click" Width="30">L</Button>
             </StackPanel>
         </GroupBox>
     </Grid>

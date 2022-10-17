@@ -15,7 +15,7 @@ namespace MapAerials.API
     /// <summary>
     /// local WebServer for transfering images into simulator
     /// </summary>
-    class WebServer
+    public class WebServer
     {
         public string URL { get; private set; }
 

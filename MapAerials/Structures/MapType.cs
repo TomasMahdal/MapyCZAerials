@@ -9,7 +9,7 @@ namespace MapAerials.Structures
     /// <summary>
     /// Map type which is used by Mapy.cz API
     /// </summary>
-    class MapType
+    public class MapType
     {
         public int ID { get; private set; }
         public string InternalName { get; private set; }

@@ -78,5 +78,11 @@ namespace MapAerials
             this.Hide();
             e.Cancel = true;
         }
+
+        private void btnSpecial_Click(object sender, RoutedEventArgs e)
+        {
+            SpecialLinksWindow specialLinksWindow = new SpecialLinksWindow(viewModel);
+            specialLinksWindow.Show();
+        }
     }
 }

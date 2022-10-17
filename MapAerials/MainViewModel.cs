@@ -10,7 +10,7 @@ using System.Windows.Threading;
 
 namespace MapAerials
 {
-    class MainViewModel : INotifyPropertyChanged
+    public class MainViewModel : INotifyPropertyChanged
     {
         private MainWindow parent;
 
