@@ -82,7 +82,7 @@ namespace MapAerials
         private void btnSpecial_Click(object sender, RoutedEventArgs e)
         {
             SpecialLinksWindow specialLinksWindow = new SpecialLinksWindow(viewModel);
-            specialLinksWindow.Show();
+            specialLinksWindow.ShowDialog();
         }
     }
 }

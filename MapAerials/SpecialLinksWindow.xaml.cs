@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MapAerials.Structures;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,23 @@ namespace MapAerials
         {
             InitializeComponent();
             DataContext = mv.WServer.SpecialLinks;
+        }
+
+        /// <summary>
+        /// Click on copy button next to link
+        /// </summary>
+        private void btnCopy_Click(object sender, RoutedEventArgs e)
+        {
+            for (var vis = sender as Visual; vis != null; vis = VisualTreeHelper.GetParent(vis) as Visual)
+            {
+                if (vis is DataGridRow)
+                {
+                    var row = (DataGridRow)vis;
+                    var item = (SpecialLink)row.Item;
+                    Clipboard.SetText(item.Url);
+                    break;
+                }
+            }
         }
     }
 }
