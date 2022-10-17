@@ -53,21 +53,6 @@ namespace MapAerials
             e.Handled = true;
         }
 
-        private void btnStart_Click(object sender, RoutedEventArgs e)
-        {
-            viewModel.StartServer();
-        }
-
-        private void btnStop_Click(object sender, RoutedEventArgs e)
-        {
-            viewModel.StopServer();
-        }
-
-        private void btnExit_Click(object sender, RoutedEventArgs e)
-        {
-            Environment.Exit(0);
-        }
-
         private void btnCopy_Click(object sender, RoutedEventArgs e)
         {
             viewModel.CopyURL();
@@ -79,10 +64,10 @@ namespace MapAerials
             e.Cancel = true;
         }
 
-        private void btnSpecial_Click(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            SpecialLinksWindow specialLinksWindow = new SpecialLinksWindow(viewModel);
-            specialLinksWindow.ShowDialog();
+            // start server
+            viewModel.StartServer();
         }
     }
 }

@@ -12,7 +12,6 @@
     <system:String x:Key="headings1">Map aerials from Mapy.cz</system:String>
     <system:String x:Key="headings2">for simulators OMSI and LOTUS</system:String>
 
-    <system:String x:Key="map_settings">Map settings</system:String>
     <system:String x:Key="map_type">Type of map:</system:String>
 
     <system:String x:Key="server_status">Server status</system:String>

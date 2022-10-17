@@ -38,9 +38,6 @@ namespace MapAerials
         {
             ContextMenuStrip cs = new ContextMenuStrip();
             cs.Items.Add(Languages.GetString("notifyIcon_exit"), null, parent.ExitApp);
-            cs.Items.Add(new ToolStripSeparator());
-            cs.Items.Add(Languages.GetString("notifyIcon_start"), null, parent.StartServer);
-            cs.Items.Add(Languages.GetString("notifyIcon_stop"), null, parent.StopServer);
 
             notifyIcon.ContextMenuStrip = cs;
         }

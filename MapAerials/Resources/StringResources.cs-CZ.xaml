@@ -12,7 +12,6 @@
     <system:String x:Key="headings1">Mapové podklady od Mapy.cz</system:String>
     <system:String x:Key="headings2">pro simulátory OMSI a LOTUS</system:String>
 
-    <system:String x:Key="map_settings">Nastavení podkladů</system:String>
     <system:String x:Key="map_type">Typ podkladů:</system:String>
 
     <system:String x:Key="server_status">Status serveru</system:String>

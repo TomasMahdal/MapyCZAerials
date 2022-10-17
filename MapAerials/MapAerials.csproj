@@ -83,9 +83,6 @@
     <Compile Include="API\WebServer.cs" />
     <Compile Include="Languages.cs" />
     <Compile Include="NotificationIcon.cs" />
-    <Compile Include="SpecialLinksWindow.xaml.cs">
-      <DependentUpon>SpecialLinksWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Structures\MapType.cs" />
     <Compile Include="Structures\SpecialLink.cs" />
     <Page Include="MainWindow.xaml">
@@ -106,10 +103,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\StringResources.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="SpecialLinksWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
