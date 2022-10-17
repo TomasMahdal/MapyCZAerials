@@ -9,8 +9,8 @@
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
             <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal">
@@ -28,16 +28,27 @@
         </StackPanel>
 
         <GroupBox Grid.Row="1" Margin="5">
+            <TabControl>
+                <TabItem Header="OMSI &amp; OMSI2">
+                    <StackPanel>
+                        <StackPanel>
+                            <Label Content="{DynamicResource map_type}"/>
+                            <ComboBox Name="comboMapType" ItemsSource="{Binding SupportedMapTypes}" SelectedItem="{Binding SelectedMapType, Mode=OneWayToSource}"/>
+
+                            <DockPanel>
+                                <Label DockPanel.Dock="Left" Content="{DynamicResource URL_for_simulator}"/>
+                                <TextBox Text="{Binding  WServer.URL, Mode=OneWay}" IsReadOnly="True" Width="300" VerticalContentAlignment="Center"/>
+                                <Button DockPanel.Dock="Right" Name="btnCopy" Click="btnCopy_Click" Width="30">&#x2398;</Button>
+                            </DockPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="LOTUS" />
+            </TabControl>
+
             <GroupBox.Header>
                 <Label Content="{DynamicResource map_settings}"/>
             </GroupBox.Header>
-
-            <StackPanel>
-                <StackPanel>
-                    <Label Content="{DynamicResource map_type}"/>
-                    <ComboBox Name="comboMapType" ItemsSource="{Binding SupportedMapTypes}" SelectedItem="{Binding SelectedMapType, Mode=OneWayToSource}"/>
-                </StackPanel>
-            </StackPanel>
         </GroupBox>
 
         <GroupBox Grid.Row="2" Margin="5">
@@ -47,20 +58,12 @@
             <StackPanel>
                 <Label Content="{Binding ServerStatus}" Foreground="{Binding ServerStatusColor}" HorizontalAlignment="Center">
                 </Label>
-                
+
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button Width="100" Margin="5" Name="btnStart" IsEnabled="{Binding StartButtonEnabled}" Click="btnStart_Click" Content="{DynamicResource start}"/>
                     <Button Width="100" Margin="5" Name="btnStop" IsEnabled="{Binding StopButtonEnabled}" Click="btnStop_Click" Content="{DynamicResource stop}"/>
                     <Button Width="100" Margin="5" Name="btnExit" Click="btnExit_Click" Content="{DynamicResource exit}"/>
                 </StackPanel>
-                <DockPanel>
-                    <Label DockPanel.Dock="Left" Content="{DynamicResource URL_for_simulator}"/>
-                    <TextBox Text="{Binding  WServer.URL, Mode=OneWay}" IsReadOnly="True" Width="300" VerticalContentAlignment="Center"/>
-                    <Button DockPanel.Dock="Right" Name="btnCopy" Click="btnCopy_Click" Width="30">&#x2398;</Button>
-                </DockPanel>
-
-
-                <Button DockPanel.Dock="Right" Name="btnSpecial" Click="btnSpecial_Click" Width="30">L</Button>
             </StackPanel>
         </GroupBox>
     </Grid>
