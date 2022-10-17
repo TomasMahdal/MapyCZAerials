@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MapAerials.Structures;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -18,6 +19,8 @@ namespace MapAerials.API
     {
         public string URL { get; private set; }
 
+        public List<SpecialLink> SpecialLinks { get; set; }
+
         public bool ServerIsRunning {
             get {
                 return serverThreadActive && webListener.IsListening;
@@ -28,13 +31,16 @@ namespace MapAerials.API
         private Thread webserverCore;
         private int port = 5050;
         private IPAddress currentIP;
-        private string urlStructure = "http://{0}:{1}/getAerials/~z/~x/~y/";
         private MainViewModel viewModel;
         private bool serverThreadActive = false;
+
+        private const string urlStructure = "http://{0}:{1}/getAerials/~z/~x/~y/";
+        private const string urlStructureAdvanced = "http://{0}:{1}/getSpecialAerials/{2}/~z/~x/~y/";
 
         public WebServer(MainViewModel _viewModel)
         {
             viewModel = _viewModel;
+            SpecialLinks = new List<SpecialLink>();
         }
 
         /// <summary>
@@ -50,6 +56,14 @@ namespace MapAerials.API
 
             // create URL
             URL = string.Format(urlStructure, currentIP, port);
+
+            // create special URLs for every type of map
+            // this URLs can be used in LOTUS, which can use multiple links for different map types
+            foreach(var mapType in viewModel.SupportedMapTypes)
+            {
+                string url = string.Format(urlStructureAdvanced, currentIP, port, mapType.ID);
+                SpecialLinks.Add(new SpecialLink(url, mapType.VisibleName));
+            }
 
             // start listening
             webListener = new WebListener(currentIP, port);

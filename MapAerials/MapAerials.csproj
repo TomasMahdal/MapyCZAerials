@@ -84,6 +84,7 @@
     <Compile Include="Languages.cs" />
     <Compile Include="NotificationIcon.cs" />
     <Compile Include="Structures\MapType.cs" />
+    <Compile Include="Structures\SpecialLink.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
