@@ -2,7 +2,7 @@
 Tool, that enables you to use [Mapy.cz](http://mapy.cz/) maps in simulators like OMSI (2) and LOTUS.
 Why [Mapy.cz](http://mapy.cz/)? Because they have done amazing work on mapping Czech and Slovak. Some map types for example touristic maps are just amazing.
 
-![image](https://user-images.githubusercontent.com/47004276/161613768-979b57b7-ad6e-4a76-bc78-8be5a7f0099e.png)
+Download: [latest release](https://github.com/TomasMahdal/MapyCZAerials/releases)
 
 ## Requirements
  - .NET Framework 4.7.2 and newer
@@ -14,3 +14,5 @@ Then you download the map aerials in a simulator like normal and use it for crea
 
 ### Yes, you can change map type at runtime!
 This feature is added by this tool. Simulators are using only one URL, so it is getting only one type of map. If you use this tool, you can change the map type in the tool and redownload tilemaps in the simulator and you’ve got another type of map!
+
+![image](https://user-images.githubusercontent.com/47004276/161613768-979b57b7-ad6e-4a76-bc78-8be5a7f0099e.png)
