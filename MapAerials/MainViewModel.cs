@@ -148,6 +148,28 @@ namespace MapAerials
         {
             Environment.Exit(0);
         }
+
+        /// <summary>
+        /// Get map type from supported (default = airplane type)
+        /// </summary>
+        /// <param name="id">ID of map</param>
+        /// <returns>type of map</returns>
+        public MapType GetMapTypeById(string id)
+        {
+            int mapTypeId = 0;
+            int.TryParse(id, out mapTypeId);
+
+            foreach(MapType type in SupportedMapTypes)
+            {
+                if (type.ID == mapTypeId)
+                {
+                    return type;
+                }
+            }
+
+            // if not found, return first map type
+            return SupportedMapTypes.First();
+        }
     }
 }
  

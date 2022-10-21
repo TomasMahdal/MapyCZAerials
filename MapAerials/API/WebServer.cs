@@ -33,7 +33,7 @@ namespace MapAerials.API
         private bool serverThreadActive = false;
 
         private const string urlStructure = "http://{0}:{1}/getAerials/~z/~x/~y/";
-        private const string urlStructureAdvanced = "http://{0}:{1}/getSpecialAerials/{2}/~z/~x/~y/";
+        private const string urlStructureAdvanced = "http://{0}:{1}/getLotusAerials/{2}/~z/~x/~y/";
 
         public WebServer(MainViewModel _viewModel)
         {
@@ -136,6 +136,17 @@ namespace MapAerials.API
                                 // send it to browser
                                 SendImageToBrowser(socket, aerials);
                                 break;
+
+                            // Lotus aerials
+                            case "getLotusAerials":
+                                // get image from MapyCZ
+                                MapType selectedType = viewModel.GetMapTypeById(splittedUrl[2]);
+                                Bitmap lAerials = MapyCZ.getAerials(splittedUrl[4], splittedUrl[5], splittedUrl[3], selectedType);
+
+                                // send it to browser
+                                SendImageToBrowser(socket, lAerials);
+                                break;
+
                             // unknown page
                             default:
                                 SendHTMLFromResources("MapAerials.API.htdocs.error404.html", socket);
