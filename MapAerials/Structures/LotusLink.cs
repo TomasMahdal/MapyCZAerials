@@ -9,7 +9,7 @@ namespace MapAerials.Structures
     /// <summary>
     /// Special links are used e.g. in LOTUS, which can handle multiple sources of aerials
     /// </summary>
-    public class SpecialLink
+    public class LotusLink
     {
         /// <summary>
         /// URL of mapType
@@ -21,7 +21,7 @@ namespace MapAerials.Structures
         /// </summary>
         public string MapType { get; private set; }
 
-        public SpecialLink(string url, string mapType)
+        public LotusLink(string url, string mapType)
         {
             Url = url;
             MapType = mapType;

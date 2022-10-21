@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MapAerials.Structures;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -29,6 +30,11 @@ namespace MapAerials
         /// Map type selected by user
         /// </summary>
         public Structures.MapType SelectedMapType { get; set; }
+
+        /// <summary>
+        /// Links for LOTUS simulator
+        /// </summary>
+        public List<LotusLink> LOTUSLinks { get; set; }
 
         public API.WebServer WServer { get; private set; }
         public event PropertyChangedEventHandler PropertyChanged;
@@ -80,6 +86,7 @@ namespace MapAerials
         {
             parent = mainWindow;
             notificationIncon = new NotificationIcon(this);
+            LOTUSLinks = new List<LotusLink>();
         }
 
         /// <summary>

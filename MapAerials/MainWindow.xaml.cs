@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MapAerials.Structures;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -68,6 +69,19 @@ namespace MapAerials
         {
             // start server
             viewModel.StartServer();
+        }
+
+        private void CopyLotusLink(object sender, RoutedEventArgs e)
+        {
+            for (var vis = sender as Visual; vis != null; vis = VisualTreeHelper.GetParent(vis) as Visual)
+            {
+                if (vis is DataGridRow)
+                {
+                    var row = (DataGridRow)vis;
+                    Clipboard.SetText(((LotusLink)row.Item).Url);
+                    break;
+                }
+            }
         }
     }
 }

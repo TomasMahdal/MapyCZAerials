@@ -19,8 +19,6 @@ namespace MapAerials.API
     {
         public string URL { get; private set; }
 
-        public List<SpecialLink> SpecialLinks { get; set; }
-
         public bool ServerIsRunning {
             get {
                 return serverThreadActive && webListener.IsListening;
@@ -40,7 +38,6 @@ namespace MapAerials.API
         public WebServer(MainViewModel _viewModel)
         {
             viewModel = _viewModel;
-            SpecialLinks = new List<SpecialLink>();
         }
 
         /// <summary>
@@ -62,7 +59,7 @@ namespace MapAerials.API
             foreach(var mapType in viewModel.SupportedMapTypes)
             {
                 string url = string.Format(urlStructureAdvanced, currentIP, port, mapType.ID);
-                SpecialLinks.Add(new SpecialLink(url, mapType.VisibleName));
+                viewModel.LOTUSLinks.Add(new LotusLink(url, mapType.VisibleName));
             }
 
             // start listening
