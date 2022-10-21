@@ -29,7 +29,7 @@ namespace MapAerials
         /// <summary>
         /// Map type selected by user
         /// </summary>
-        public Structures.MapType SelectedMapType { get; set; }
+        public Structures.MapType GenericSelectedMapType { get; set; }
 
         /// <summary>
         /// Links for LOTUS simulator

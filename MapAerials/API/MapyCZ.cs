@@ -52,7 +52,7 @@ namespace MapAerials.API
 
                 // convert image data to bitmap
                 return new Bitmap(response.GetResponseStream());
-            } catch (System.Net.WebException ex)
+            } catch (System.Net.WebException)
             {
                 return null;
             }

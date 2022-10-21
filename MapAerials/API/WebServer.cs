@@ -131,7 +131,7 @@ namespace MapAerials.API
                             // aerial page
                             case "getAerials":
                                 // get image from MapyCZ
-                                Bitmap aerials = MapyCZ.getAerials(splittedUrl[3], splittedUrl[4], splittedUrl[2], viewModel.SelectedMapType);
+                                Bitmap aerials = MapyCZ.getAerials(splittedUrl[3], splittedUrl[4], splittedUrl[2], viewModel.GenericSelectedMapType);
                                 
                                 // send it to browser
                                 SendImageToBrowser(socket, aerials);
@@ -233,22 +233,6 @@ namespace MapAerials.API
             {
                 objSocket.Send(imgBytes);
             }
-        }
-
-        /// <summary>
-        /// Get IPv4 address of local network interface
-        /// </summary>
-        /// <returns>IPv4 of local network interface</returns>
-        private static IPAddress GetLocalIP()
-        {
-            foreach (IPAddress ip in Dns.GetHostByName(Dns.GetHostName()).AddressList)
-            {
-                if (ip.AddressFamily == AddressFamily.InterNetwork)
-                {
-                    return ip;
-                }
-            }
-            throw new Exception("No network adapter with IPv4 address found!");
         }
     }
 }
