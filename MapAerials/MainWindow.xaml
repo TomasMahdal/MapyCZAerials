@@ -33,7 +33,7 @@
                     <StackPanel Margin="5">
                         <StackPanel>
                             <Label Content="{DynamicResource map_type}"/>
-                            <ComboBox Name="comboMapType" ItemsSource="{Binding SupportedMapTypes}" SelectedItem="{Binding SelectedMapType, Mode=OneWayToSource}"/>
+                            <ComboBox Name="comboMapType" ItemsSource="{Binding SupportedMapTypes}" SelectedItem="{Binding GenericSelectedMapType, Mode=OneWayToSource}"/>
 
                             <DockPanel Margin="0 5 0 0">
                                 <Label DockPanel.Dock="Left" Content="{DynamicResource URL_for_simulator}"/>

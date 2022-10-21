@@ -26,4 +26,6 @@
     <system:String x:Key="notifyIcon_stop">vypnout server</system:String>
 
     <system:String x:Key="dialog_anotherInstance">Program je již spustěn!</system:String>
+
+    <system:String x:Key="dialog_corruptedLink">Aplikace přijala neznámý požadavek! Ověřte, zda jste skutečně zadali do simulátoru správný odkaz.</system:String>
 </ResourceDictionary>

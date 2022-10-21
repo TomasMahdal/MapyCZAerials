@@ -26,4 +26,6 @@
     <system:String x:Key="notifyIcon_stop">stop server</system:String>
 
     <system:String x:Key="dialog_anotherInstance">An instance of the application is already running.</system:String>
+
+    <system:String x:Key="dialog_corruptedLink">The application received an unknown request! Verify that you have indeed entered a valid URL into the simulator.</system:String>
 </ResourceDictionary>

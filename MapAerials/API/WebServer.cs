@@ -9,6 +9,7 @@ using System.Net.Sockets;
 using System.Reflection;
 using System.Text;
 using System.Threading;
+using System.Windows;
 
 namespace MapAerials.API
 {
@@ -130,6 +131,13 @@ namespace MapAerials.API
 
                             // aerial page
                             case "getAerials":
+                                // aerials link must contains params
+                                if (splittedUrl.Length < 7)
+                                {
+                                    MessageBox.Show(Languages.GetString("dialog_corruptedLink"), "Web request", MessageBoxButton.OK, MessageBoxImage.Error);
+                                    break;
+                                }
+
                                 // get image from MapyCZ
                                 Bitmap aerials = MapyCZ.getAerials(splittedUrl[3], splittedUrl[4], splittedUrl[2], viewModel.GenericSelectedMapType);
                                 
@@ -139,6 +147,13 @@ namespace MapAerials.API
 
                             // Lotus aerials
                             case "getLotusAerials":
+                                // aerials link must contains params
+                                if (splittedUrl.Length < 8)
+                                {
+                                    MessageBox.Show(Languages.GetString("dialog_corruptedLink"), "Web request", MessageBoxButton.OK, MessageBoxImage.Error);
+                                    break;
+                                }
+
                                 // get image from MapyCZ
                                 MapType selectedType = viewModel.GetMapTypeById(splittedUrl[2]);
                                 Bitmap lAerials = MapyCZ.getAerials(splittedUrl[4], splittedUrl[5], splittedUrl[3], selectedType);
@@ -162,7 +177,7 @@ namespace MapAerials.API
                 }
             }
         }
-
+         
         /// <summary>
         /// Send data to browser
         /// </summary>
